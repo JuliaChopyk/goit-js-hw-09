@@ -14,12 +14,21 @@ function startChangingColor() {
     document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 
-  startButton.disabled = true;
-  stopButton.disabled = false;
+  startButtonDisabled(true);
 }
 
 function stopChangingColor() {
   clearInterval(intervalId);
+
+  startButtonDisabled(false);
+}
+
+function startButtonDisabled(boolean) {
+  if (boolean) {
+    startButton.disabled = true;
+    stopButton.disabled = false;
+    return;
+  }
   startButton.disabled = false;
   stopButton.disabled = true;
 }
